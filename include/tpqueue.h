@@ -4,7 +4,7 @@
 #include <cassert>
 template<typename T>
 class TPQueue {
- private:
+  private:
   T *arr;
   int size;
   int begin, end;
@@ -31,14 +31,13 @@ class TPQueue {
   ~TPQueue() {
     delete[] arr;
   }
-	
   void push(const T &item) {
     assert(count < size);
-    if (count != 0 && item.prior > arr[count - 1].prior){
+    if (count != 0 && item.prior > arr[count - 1].prior) {
     arr[end++] = item;
     count++;
     for (int i = 1; i< count; i++)
-      if(arr[count - i].prior > arr[count - (i + 1)].prior){
+      if (arr[count - i].prior > arr[count - (i + 1)].prior) {
         T dub = arr[count - i];
         arr[count - i] = arr[count - (i + 1)];
         arr[count - (i + 1)] = dub;
@@ -50,7 +49,6 @@ class TPQueue {
     if (end > size)
         end -= size + 1;
   }
-	
   T pop() {
     assert(count > 0);
     T item = arr[begin];
